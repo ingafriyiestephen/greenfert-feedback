@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Feedback Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #f0f9f0, #e0f2e0);
+            min-height: 100vh;
+        }
+        .form-section {
+            transition: all 0.3s ease;
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+        .checkbox-option:checked + span {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .radio-option:checked + span {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body class="py-8 px-4">
+    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-green-600 py-4 px-6 text-white">
+            <h1 class="text-2xl font-bold">Greenfert Organic Fertilizer - Feedback Questionnaire</h1>
+            <p class="mt-1">Your feedback helps us improve our products and services</p>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="px-6 pt-4">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="progress-bar bg-green-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between text-sm text-gray-500 mt-1">
+                <span>0%</span>
+                <span>Progress</span>
+                <span>100%</span>
+            </div>
+        </div>
+        
+        <form id="farmerFeedbackForm" class="px-6 py-4">
+            <!-- Section 1: Farmer Profile -->
+            <div class="form-section">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">1</div>
+                    <h2 class="ml-3 text-xl font-semibold text-gray-800">Farmer Profile</h2>
+                </div>
+                
+                <!-- Question 1 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">1. What type of crops do you grow?</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="crops" value="maize" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Maize</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="crops" value="rice" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Rice</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="crops" value="vegetables" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Vegetables</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="crops" value="tree_crops" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Tree crops (cocoa, mango, etc.)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" name="crops" value="other" class="checkbox-option hidden" id="otherCropCheck">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Other:</span>
+                            <input type="text" name="crops_other" class="ml-2 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Specify other crops" disabled>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">2. How many acres/hectares do you currently farm?</label>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="farm_size" value="less_than_2" class="radio-option hidden">
+                            <span class="px-4 py-2 rounded-md">Less than 2</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="farm_size" value="2_to_5" class="radio-option hidden">
+                            <span class="px-4 py-2 rounded-md">2–5</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="farm_size" value="6_to_10" class="radio-option hidden">
+                            <span class="px-4 py-2 rounded-md">6–10</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="farm_size" value="more_than_10" class="radio-option hidden">
+                            <span class="px-4 py-2 rounded-md">More than 10</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end mb-6">
+                    <button type="button" class="next-section bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Next Section <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+            </div>
+            
+            <!-- Section 2: Experience with the Fertilizer -->
+            <div class="form-section hidden">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">2</div>
+                    <h2 class="ml-3 text-xl font-semibold text-gray-800">Experience with the Fertilizer</h2>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">3. How did you first hear about our organic fertilizer?</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="hear_about" value="extension_officer" class="radio-option hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Extension officer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="hear_about" value="another_farmer" class="radio-option hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Another farmer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="hear_about" value="social_media" class="radio-option hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Social media/advertisement</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="hear_about" value="agro_input_dealer" class="radio-option hidden">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Agro-input dealer/shop</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="hear_about" value="other" class="radio-option hidden" id="otherHearCheck">
+                            <span class="w-5 h-5 rounded-full border border-gray-400 mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Other:</span>
+                            <input type="text" name="hear_about_other" class="ml-2 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Specify other" disabled>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">4. How easy was it to apply the fertilizer?</label>
+                    <div class="grid grid-cols-4 gap-3 mt-2">
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="ease_of_application" value="very_easy" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Very easy</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="ease_of_application" value="easy" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Easy</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="ease_of_application" value="difficult" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Difficult</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="ease_of_application" value="very_difficult" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Very difficult</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 5 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">5. Compared to chemical fertilizers, how would you rate the effectiveness?</label>
+                    <div class="grid grid-cols-4 gap-3 mt-2">
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="effectiveness" value="much_better" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Much better</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="effectiveness" value="better" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Better</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="effectiveness" value="same" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">About the same</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="effectiveness" value="worse" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Worse</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 6 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">6. Did you notice improvements in (tick all that apply)?</label>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="improvements" value="soil_health" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Soil health</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="improvements" value="plant_growth" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Plant growth</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="improvements" value="yield" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Yield</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="improvements" value="crop_quality" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Crop quality</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="improvements" value="pest_resistance" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Pest/disease resistance</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mb-6">
+                    <button type="button" class="prev-section bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg transition duration-300"><i class="fas fa-arrow-left mr-1"></i> Previous Section</button>
+                    <button type="button" class="next-section bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Next Section <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+            </div>
+            
+            <!-- Section 3: Satisfaction & Challenges -->
+            <div class="form-section hidden">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">3</div>
+                    <h2 class="ml-3 text-xl font-semibold text-gray-800">Satisfaction & Challenges</h2>
+                </div>
+                
+                <!-- Question 7 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">7. Overall, how satisfied are you with the fertilizer?</label>
+                    <div class="grid grid-cols-4 gap-3 mt-2">
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="satisfaction" value="very_satisfied" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Very satisfied</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="satisfaction" value="satisfied" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Satisfied</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="satisfaction" value="neutral" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Neutral</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="satisfaction" value="dissatisfied" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Dissatisfied</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 8 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">8. What challenges (if any) did you face?</label>
+                    <div class="grid grid-cols-2 gap-3 mt-2">
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="challenges" value="availability" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Availability</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="challenges" value="price" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Price</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="challenges" value="application_difficulties" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Application difficulties</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="challenges" value="limited_results" class="checkbox-option hidden">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Limited results</span>
+                        </label>
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer checkbox-card">
+                            <input type="checkbox" name="challenges" value="other" class="checkbox-option hidden" id="otherChallengeCheck">
+                            <span class="w-5 h-5 border border-gray-400 rounded mr-2 flex items-center justify-center"><i class="fas fa-check hidden text-xs"></i></span>
+                            <span class="select-none">Other:</span>
+                            <input type="text" name="challenges_other" class="ml-2 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Specify other" disabled>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mb-6">
+                    <button type="button" class="prev-section bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg transition duration-300"><i class="fas fa-arrow-left mr-1"></i> Previous Section</button>
+                    <button type="button" class="next-section bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Next Section <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
+            </div>
+            
+            <!-- Section 4: Future Use & Recommendations -->
+            <div class="form-section hidden">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">4</div>
+                    <h2 class="ml-3 text-xl font-semibold text-gray-800">Future Use & Recommendations</h2>
+                </div>
+                
+                <!-- Question 9 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">9. Would you recommend our fertilizer to other farmers?</label>
+                    <div class="grid grid-cols-3 gap-3 mt-2">
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="recommend" value="yes" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Yes, definitely</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="recommend" value="maybe" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">Maybe</span>
+                        </label>
+                        <label class="flex flex-col items-center justify-center p-4 border border-gray-300 rounded-lg cursor-pointer radio-card">
+                            <input type="radio" name="recommend" value="no" class="radio-option hidden">
+                            <span class="text-center px-2 py-1 rounded-md">No</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Question 10 -->
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">10. What suggestions do you have for us to improve?</label>
+                    <textarea name="suggestions" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Please share your suggestions here..."></textarea>
+                </div>
+                
+                <div class="flex justify-between mb-6">
+                    <button type="button" class="prev-section bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-6 rounded-lg transition duration-300"><i class="fas fa-arrow-left mr-1"></i> Previous Section</button>
+                    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Submit Feedback <i class="fas fa-paper-plane ml-1"></i></button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden px-6 py-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Thank You!</h3>
+            <p class="text-gray-600">Your feedback has been successfully submitted. We appreciate your time and input.</p>
+            <button type="button" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300" onclick="resetForm()">Submit Another Response</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSections = document.querySelectorAll('.form-section');
+            const progressBar = document.querySelector('.progress-bar');
+            const nextButtons = document.querySelectorAll('.next-section');
+            const prevButtons = document.querySelectorAll('.prev-section');
+            const form = document.getElementById('farmerFeedbackForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            let currentSection = 0;
+            
+            // Initialize form
+            updateProgress();
+            setupCustomInputs();
+            
+            // Next button event listeners
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (validateSection(currentSection)) {
+                        formSections[currentSection].classList.add('hidden');
+                        currentSection++;
+                        formSections[currentSection].classList.remove('hidden');
+                        updateProgress();
+                    }
+                });
+            });
+            
+            // Previous button event listeners
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    formSections[currentSection].classList.add('hidden');
+                    currentSection--;
+                    formSections[currentSection].classList.remove('hidden');
+                    updateProgress();
+                });
+            });
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateSection(currentSection)) {
+                    // Collect form data
+                    const formData = new FormData(form);
+                    const data = {
+                        crops: [],
+                        improvements: [],
+                        challenges: []
+                    };
+                    
+                    // Process form data
+                    for (let [key, value] of formData.entries()) {
+                        if (key === 'crops' || key === 'improvements' || key === 'challenges') {
+                            // Add to arrays for checkbox values
+                            data[key].push(value);
+                        } else if (key === 'crops_other' && value) {
+                            // Handle "other" crops
+                            data.crops.push(value);
+                            data.crops_other = value;
+                        } else if (key === 'challenges_other' && value) {
+                            // Handle "other" challenges
+                            data.challenges.push(value);
+                            data.challenges_other = value;
+                        } else if (key === 'hear_about_other' && value) {
+                            // Handle "other" hear about
+                            data.hear_about = value;
+                            data.hear_about_other = value;
+                        } else {
+                            // Add other values directly
+                            data[key] = value;
+                        }
+                    }
+                    
+                    // Remove empty arrays
+                    if (data.crops.length === 0) delete data.crops;
+                    if (data.improvements.length === 0) delete data.improvements;
+                    if (data.challenges.length === 0) delete data.challenges;
+                    
+                    // Submit data to Laravel API
+                    fetch('https://app.rejuvenategaia.com/api/farmer-feedbacks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Show success message
+                            form.classList.add('hidden');
+                            successMessage.classList.remove('hidden');
+                        } else {
+                            console.error('Validation errors:', data.errors);
+                            alert('There was an error submitting your feedback. Please check all required fields.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        alert('There was an error submitting your feedback. Please try again.');
+                    });
+                }
+            });
+            
+            // Update progress bar
+            function updateProgress() {
+                const progress = ((currentSection + 1) / formSections.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                document.querySelector('.flex.justify-between span:first-child').textContent = `${Math.round(progress)}%`;
+            }
+            
+            // Setup custom inputs
+            function setupCustomInputs() {
+                // Checkbox functionality
+                document.querySelectorAll('.checkbox-option').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const checkIcon = this.nextElementSibling.querySelector('.fa-check');
+                        if (this.checked) {
+                            checkIcon.classList.remove('hidden');
+                            this.nextElementSibling.classList.add('bg-green-100', 'border-green-500');
+                            
+                            // Enable other text input if needed
+                            if (this.id === 'otherCropCheck' || this.id === 'otherChallengeCheck') {
+                                this.parentElement.querySelector('input[type="text"]').disabled = false;
+                            }
+                        } else {
+                            checkIcon.classList.add('hidden');
+                            this.nextElementSibling.classList.remove('bg-green-100', 'border-green-500');
+                            
+                            // Disable other text input if needed
+                            if (this.id === 'otherCropCheck' || this.id === 'otherChallengeCheck') {
+                                this.parentElement.querySelector('input[type="text"]').disabled = true;
+                            }
+                        }
+                    });
+                });
+                
+                // Radio button functionality
+                document.querySelectorAll('.radio-option').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        // Remove highlights from all options in the same group
+                        document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => {
+                            r.parentElement.classList.remove('bg-green-100', 'border-green-500');
+                        });
+                        
+                        // Highlight selected option
+                        this.parentElement.classList.add('bg-green-100', 'border-green-500');
+                        
+                        // Enable other text input if needed
+                        if (this.id === 'otherHearCheck') {
+                            this.parentElement.querySelector('input[type="text"]').disabled = false;
+                        }
+                    });
+                });
+                
+                // Other input enabling based on radio selection
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    if (radio.id === 'otherHearCheck') {
+                        radio.addEventListener('change', function() {
+                            const otherInput = this.parentElement.querySelector('input[type="text"]');
+                            otherInput.disabled = !this.checked;
+                        });
+                    }
+                });
+            }
+            
+            // Validate current section
+            function validateSection(sectionIndex) {
+                // Add validation logic here for each section if needed
+                // For simplicity, we're just returning true
+                return true;
+            }
+        });
+        
+        // Reset form function
+        function resetForm() {
+            document.getElementById('farmerFeedbackForm').reset();
+            document.querySelectorAll('.form-section').forEach((section, index) => {
+                if (index === 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+            document.querySelectorAll('.fa-check').forEach(icon => icon.classList.add('hidden'));
+            document.querySelectorAll('.checkbox-card, .radio-card').forEach(card => {
+                card.classList.remove('bg-green-100', 'border-green-500');
+            });
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('farmerFeedbackForm').classList.remove('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+            
+            // Reset progress
+            document.querySelector('.progress-bar').style.width = '0%';
+            document.querySelector('.flex.justify-between span:first-child').textContent = '0%';
+            
+            currentSection = 0;
+        }
+    </script>
+</body>
+</html>
